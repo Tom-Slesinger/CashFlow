@@ -1,5 +1,4 @@
 using CashFlow.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CashFlow.Pages
@@ -17,7 +16,13 @@ namespace CashFlow.Pages
 
         public void OnGet()
         {
-            var transactions = _context.Transactions.ToList();
+            Models.Transaction transactionNew = new();
+            transactionNew.Amount = 99;
+            transactionNew.Description = "test from ASP NET";
+            transactionNew.Type = "Expense";
+
+            _context.Transactions.Add(transactionNew);
+            _context.SaveChanges();
         }
     }
 }
