@@ -12,7 +12,7 @@ namespace CashFlow.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Transaction>().ToTable("Transaction");
+            modelBuilder.Entity<Transaction>().ToTable("TRANSACTION_T");
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
