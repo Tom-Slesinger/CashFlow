@@ -1,5 +1,8 @@
-﻿namespace CashFlow.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CashFlow.Models
 {
+    [Table("TRANSACTION_T")]
     public class Transaction
     {
         public int ID { get; set; } = 0;

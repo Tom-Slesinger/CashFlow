@@ -17,7 +17,7 @@ namespace CashFlow.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-2CFL393\\ASPNETDATABASE;Initial Catalog=CashFlow;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-2CFL393\\ASPNETDATABASE;Initial Catalog=CashFlow;Integrated Security=True ;Encrypt=False");
         }
     }
 }
