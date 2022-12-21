@@ -4,8 +4,10 @@ namespace CashFlow.Models
 {
     public class CashFlowContext : DbContext
     {
-        public CashFlowContext(DbContextOptions<CashFlowContext> options) : base(options)
+        private readonly string? _connectionString;
+        public CashFlowContext(DbContextOptions<CashFlowContext> options, IConfiguration config) : base(options)
         {
+            _connectionString = config["LocalSQLConnectionString"];
         }
 
         public DbSet<Transaction> Transactions { get; set; }
@@ -17,7 +19,7 @@ namespace CashFlow.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-2CFL393\\ASPNETDATABASE;Initial Catalog=CashFlow;Integrated Security=True ;Encrypt=False");
+            optionsBuilder.UseSqlServer(_connectionString);
         }
     }
 }

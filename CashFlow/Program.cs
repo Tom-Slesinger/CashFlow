@@ -6,14 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
-
+builder.Services.AddControllers();
+var cs = builder.Configuration["LocalSQLConnectionString"];
+builder.Services.AddDbContext<CashFlowContext>(options => options.UseSqlServer(cs));
 builder.Services.AddDbContext<CashFlowContext>(options =>
   options.UseSqlServer(builder.Configuration.GetConnectionString("CashFlowContext")));
 
-
-var serviceCollection = new Microsoft.Extensions.DependencyInjection.ServiceCollection();
-serviceCollection.AddDbContext<CashFlowContext>(options => options.UseSqlServer("Data Source=DESKTOP-2CFL393\\ASPNETDATABASE;Initial Catalog=CashFlow;Integrated Security=True ;Encrypt=False"));
 
 
 var app = builder.Build();
@@ -30,6 +28,7 @@ else
     app.UseDeveloperExceptionPage();
 }
 
+//Check if DB connection is available
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -46,5 +45,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapDefaultControllerRoute();
 
 app.Run();
