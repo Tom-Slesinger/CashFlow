@@ -2,8 +2,9 @@
 
 namespace CashFlow.Models
 {
-    public class TransactionModel : PageModel
+    public class TransactionModel
     {
-        List<Transaction> Transactions = new List<Transaction>();
+        public string PageTitle = string.Empty;
+        public List<Transaction> Transactions = new List<Transaction>();
     }
 }

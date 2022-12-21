@@ -1,0 +1,35 @@
+﻿@using CashFlow.Models
+@model TransactionModel
+
+@{
+    var my = Model.PageTitle;
+}
+
+<h1>@Model.PageTitle</h1>
+
+<p>
+    <a asp-page="Create">Create New Transaction</a>
+</p>
+
+<table class="table">
+    <thead>
+        @foreach (var item in Model.Transactions)
+        {
+        <tr>
+            <td>
+                    @Html.DisplayFor(model => item.ID)<br/>                    
+            </td>
+            <td>
+                    @Html.DisplayFor(model => item.Amount)<br />
+            </td>
+            <td>
+                    @Html.DisplayFor(model => item.Description)<br />
+            </td>
+                <td>
+                    @Html.DisplayFor(model => item.Type)<br />
+                </td>
+
+        </tr>
+        }
+    </thead>
+</table>
