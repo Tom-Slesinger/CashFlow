@@ -23,6 +23,11 @@ namespace CashFlow.Controllers
             return View(model);
         }
 
+        public IActionResult Create()
+        {
+            return PartialView("_TransactionCreate");
+        }
+
         public List<Transaction> GetTransactions()
         {
             var transactions = _context.Transactions.ToList();
