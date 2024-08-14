@@ -10,7 +10,7 @@
 
 <h1>@Model.PageTitle</h1>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<button id="createTransaction" type="button" class="btn btn-primary">
     Create
 </button>
 
@@ -26,6 +26,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group">
+                        <label>ID</label>
+                        <input type="text" class="form-control" required="required" name="id" readonly/>
+                    </div>
                     <div class="form-group">
                         <label>Description</label>
                         <input type="text" class="form-control" required="required" name="description" />
@@ -44,8 +48,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" id="addTransaction" class="btn btn-primary">Add Transaction</button>
+                    <button id="closeTransaction" type="button" class="btn btn-secondary">Close</button>
+                    <button id="addTransaction" type="button" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>
@@ -63,19 +67,22 @@ else
             {
 
                 <tr>
-                    <td>
+                    <td id="@Html.DisplayFor(model=>item.ID)ID">
                         @Html.DisplayFor(model => item.ID)<br />
                     </td>
-                    <td>
+                    <td id="@Html.DisplayFor(model=>item.ID)amount">
                         @Html.DisplayFor(model => item.Amount)<br />
                     </td>
-                    <td>
+                    <td id="@Html.DisplayFor(model=>item.ID)desc">
                         @Html.DisplayFor(model => item.Description)<br />
                     </td>
-                    <td>
+                    <td id="@Html.DisplayFor(model=>item.ID)tt">
                         @Html.DisplayFor(model => item.TransactionType)<br />
                     </td>
-
+                    <td>
+                        <button id="editTransaction" data-custom-id="@Html.DisplayFor(model => item.ID)" type="button" class="btn btn-outline-info">Edit</button>
+                        <button id="deleteTransaction" data-custom-id="@Html.DisplayFor(model => item.ID)" type="button" class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
             }
         </thead>
