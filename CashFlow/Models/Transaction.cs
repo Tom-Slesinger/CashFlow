@@ -9,8 +9,11 @@ namespace CashFlow.Models
         public int ID { get; set; } = 0;
         public string? Description { get; set; } = string.Empty;
         public decimal? Amount { get; set; } = 0M;
-        public TransactionType? TransactionType { get; set; } = null;
+        public TransactionTypes? TransactionType { get; set; } = null;
     }
-
-    public enum TransactionType { Expense, Income };
+    public enum TransactionTypes 
+    {
+        Expense = 0,
+        Income = 1 }
+    ;
 }
