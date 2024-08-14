@@ -23,9 +23,23 @@ namespace CashFlow.Controllers
             return View(model);
         }
 
-        public IActionResult Create()
+        [HttpPost]
+        [Route("Transaction/SaveTransaction")]
+        public IActionResult SaveTransaction([FromBody] Transaction transaction)
         {
-            return PartialView("_TransactionCreate");
+            if (transaction.Amount == null)
+            {
+                return BadRequest("Amount is a required field.");
+            }
+
+            if (transaction.Description == null)
+            {
+                return BadRequest("Descrption is a required field.");
+            }
+
+            _context.Transactions.Add(transaction);
+            _context.SaveChanges();
+            return Ok();
         }
 
         public List<Transaction> GetTransactions()

@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "mssql1": {
-      "secretStore": "LocalSecretsFile",
-      "type": "mssql.local",
-      "connectionId": "VisualStudioConnectionString",
-      "dynamicId": null
-    },
     "secrets1": {
       "secretStore": null,
       "resourceId": null,
