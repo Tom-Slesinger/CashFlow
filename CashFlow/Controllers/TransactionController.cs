@@ -62,6 +62,7 @@ namespace CashFlow.Controllers
         {
             public int? ID { get; set; }
         }
+
         [HttpPost]
         [Route("Transaction/DeleteTransaction")]
         public IActionResult DeleteTransaction([FromBody] DeleteTransactionModel? obj)

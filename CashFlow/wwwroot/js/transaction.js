@@ -1,6 +1,5 @@
 ﻿window.addEventListener('load', function () {
     BindTransactionCRUDControls();
-
 });
 
 
@@ -37,18 +36,10 @@ function BindTransactionDelete() {
     }
 }
 
-function BindTransactionEdit() {
-    let editBtnList = document.querySelectorAll("[id='deleteTransaction']");
-    for (let i = 0; i < editBtnList.length; i++) {
-        editBtnList[i].addEventListener('click', function () {
-            EditTransaction(editBtnList[i].getAttribute('data-custom-id'));
-        });
-    }
-}
-
 function BindTransactionCreate() {
     let createBtn = $('#createTransaction')[0];
     createBtn.addEventListener('click', function () {
+        clearModalValues();
         $('#exampleModal').modal('show');
     });
 }
@@ -124,4 +115,11 @@ function setModalValues(dataID) {
     document.querySelector("[name=amount]").value = $('#' + `${dataID}amount`)[0].textContent.trim();
     document.querySelector("[name=transactiontype]").value = $('#' + `${dataID}tt`)[0].textContent.trim();
     document.querySelector("[name=id]").value = dataID;
+}
+
+function clearModalValues() {
+    document.querySelector("[name=description]").value = "";
+    document.querySelector("[name=amount]").value = null;
+    document.querySelector("[name=transactiontype]").value = null;
+    document.querySelector("[name=id]").value = 0;
 }
